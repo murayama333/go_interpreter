@@ -27,6 +27,7 @@ func TestNextToken(t *testing.T) {
 		10 != 9;
 	`
 
+
 	tests := []struct {
 		expectedType    token.TokenType
 		expectedLiteral string

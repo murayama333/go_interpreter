@@ -33,9 +33,7 @@ func TestEvalIntegerExpression(t *testing.T) {
 		evaluated := testEval(tt.input)
 		testIntegerObject(t, evaluated, tt.expected)
 	}
-} // {"-true", "unknown operator: -BOOLEAN"},
-// {"true + false", "unknown operator: BOOLEAN + BOOLEAN"},
-// {"5; true + false; 5", "unknown operator: BOOLEAN + BOOLEAN"},
+}
 
 func testEval(input string) object.Object {
 	l := lexer.New(input)

@@ -384,13 +384,12 @@ func (p *Parser) parseExpression(precedence int) ast.Expression {
 
 func (p *Parser) parseLetStatement() *ast.LetStatement {
 	stmt := &ast.LetStatement{Token: p.curToken}
-	// letの次は識別子
+
 	if !p.expectPeek(token.IDENT) {
 		return nil
 	}
 	stmt.Name = &ast.Identifier{Token: p.curToken, Value: p.curToken.Literal}
 
-	// 識別子の次は=
 	if !p.expectPeek(token.ASSIGN) {
 		return nil
 	}
@@ -398,7 +397,6 @@ func (p *Parser) parseLetStatement() *ast.LetStatement {
 	p.nextToken()
 	stmt.Value = p.parseExpression(LOWEST)
 
-	// ;まで進める
 	if p.peekTokenIs(token.SEMICOLON) {
 		p.nextToken()
 	}
@@ -408,7 +406,6 @@ func (p *Parser) parseLetStatement() *ast.LetStatement {
 func (p *Parser) parseReturnStatement() *ast.ReturnStatement {
 	stmt := &ast.ReturnStatement{Token: p.curToken}
 
-	// TODO ReturnValueはあとで
 	p.nextToken()
 
 	stmt.ReturnValue = p.parseExpression(LOWEST)

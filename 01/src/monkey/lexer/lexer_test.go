@@ -6,7 +6,6 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	// input := "=+(){},;"
 	input := `let five = 5;
 		let ten = 10;
 		
